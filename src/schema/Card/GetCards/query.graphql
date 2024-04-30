@@ -1,0 +1,19 @@
+query GetCards($params: GetCardsInWorkbookParams!) {
+   getCardsInWorkbook(params: $params) {
+      ... on Card {
+         ...Shared_MacroCardInfo
+      }
+      ... on CardNotFound {
+         message
+         cardId
+      }
+      ... on CardAccessDenied {
+         message
+         cardId
+      }
+      ... on CardIsDeleted {
+         message
+         cardId
+      }
+   }
+}
